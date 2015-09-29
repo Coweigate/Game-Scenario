@@ -1,0 +1,1 @@
+D:\Education\1-Software University\Fundamental Level\Advanced C#\Exercises\04.FileStreams\FindTheLettersGame\FindTheLettersGame\bin\Debug\FindTheLettersGame.exe.config
