@@ -58,8 +58,6 @@ namespace FindTheLettersGame
             /*intro part*/
 
             /*end of intro part*/
-            Console.ReadKey();
-            Console.Clear();
             MainLoop();
 
 
