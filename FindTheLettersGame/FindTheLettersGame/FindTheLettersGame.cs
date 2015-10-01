@@ -46,7 +46,7 @@ namespace FindTheLettersGame
         /*static variables*/
 
         //declare level by default 1
-        static int level = 1;
+        static int level = 3;
         //declare timer
         static Stopwatch timer = new Stopwatch();
 
@@ -55,24 +55,109 @@ namespace FindTheLettersGame
         /*main method*/
         static void Main(string[] args)
         {
+            RemoveScrollBars();
             /*intro part*/
 
+            //shows the title of the game
+
+            //menu with short instructions
+            //- you have 20 seconds to find and collect alphabetically a number of letters
+            //- arrow up/down/left/right for movements
+            //-'h' for hint(optional)
+            //- press ENTER to start
+            
             /*end of intro part*/
             MainLoop();
-
 
         }
         /*----------------------*/
         /*methods for intro part*/
 
 
+
+
+
+
+
         /*----------------------*/
         /*matrix generator*/
+        static char[,] CreateEmptyMatrix(int boardSize)
+        {
+            char[,] matrix = new char[boardSize, boardSize];
+
+            for (int row = 0; row < boardSize; row++)
+            {
+                for (int col = 0; col < boardSize; col++)
+                {
+                    matrix[row, col] = (char)32;
+                }
+            }
+            return matrix;
+        }
+
+        static void PrintMatrix(char[,]matrix, int boardSize)
+        {
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, 3);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.Black;
+            //Console.WriteLine("Result: {0}", result);
+
+            for (int row = 0; row < boardSize; row++)
+            {
+                Console.SetCursorPosition(Console.WindowWidth / 2 - boardSize, 5 + row);
+
+                for (int col = 0; col < boardSize; col++)
+                {
+                    if (col == boardSize - 1)
+                    {
+                        Console.WriteLine("|{0:3}|", matrix[row, col]);
+                    }
+                    else
+                    {
+                        Console.Write("|{0:3}", matrix[row, col]);
+                    }
+                }
+                Console.WriteLine();
+            }
+
+        }
 
 
+        static void GenerateMatrix(int level)
+        {
+            int boardSize = 0; //default board size
+            int letters = 0; //default letter count
+      
+            //customizing boardsize and number of letters depending on the level  
+            switch (level)
+            {
+                case 1: boardSize = 8; letters = 5; break; //number of letters = 5; random (65, 70)
+                case 2: boardSize = 10; letters = 8; break; //number of letters = 8; random (65, 73)
+                case 3: boardSize = 12; letters = 11; break; // number of letters = 11; random (65, 76)
+            }
+            
+            char[,] matrix = CreateEmptyMatrix(boardSize);
 
+            Random randomPick = new Random();
+            List<char> charList = new List<char>
+            { 'A', 'B', 'C', 'D', 'E', 'F',
+              'G', 'H', 'I', 'J', 'K', 'L',
+              'M', 'N', 'O', 'P', 'Q', 'R',
+              'S', 'T', 'U', 'V', 'W', 'X',
+              'Y', 'Z'};
 
+            for (int i = 0; i < letters; i++)
+            {
+                int randomRow = randomPick.Next(0, boardSize);
+                int randomCol = randomPick.Next(0, boardSize);
 
+                while (matrix[randomRow, randomCol] == ' ')
+                {
+                    matrix[randomRow, randomCol] = charList[i];
+                }
+            }
+            PrintMatrix(matrix, boardSize);
+        }
 
         /*----------------------*/
 
@@ -89,6 +174,8 @@ namespace FindTheLettersGame
             timer = new Stopwatch();
             timer.Start();
 
+            GenerateMatrix(level);
+            
             //check if time is up --> stop loop
             while (timeToFindTheLetters - timer.Elapsed.Seconds > 0)
             {
@@ -109,5 +196,15 @@ namespace FindTheLettersGame
 
         /*---------------------*/
 
+
+
+
+        //remove scrollbars of the console
+        static void RemoveScrollBars()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BufferHeight = Console.WindowHeight;
+            Console.BufferWidth = Console.WindowWidth;
+        }
     }
 }
