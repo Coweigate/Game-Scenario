@@ -1,1 +1,7 @@
 D:\Education\1-Software University\Fundamental Level\Advanced C#\Exercises\04.FileStreams\FindTheLettersGame\FindTheLettersGame\bin\Debug\FindTheLettersGame.exe.config
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\bin\Debug\FindTheLettersGame.exe.config
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\bin\Debug\FindTheLettersGame.exe
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\bin\Debug\FindTheLettersGame.pdb
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\obj\Debug\FindTheLettersGame.csprojResolveAssemblyReference.cache
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\obj\Debug\FindTheLettersGame.exe
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\FindTheLettersGame\FindTheLettersGame\obj\Debug\FindTheLettersGame.pdb
