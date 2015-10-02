@@ -44,8 +44,7 @@ namespace FindTheLettersGame
 
         }
         /*static variables*/
-        //declare playerCords
-        static PlayerCoordinates playerCords = new PlayerCoordinates();
+
         //declare level by default 1
         static int level = 3;
         //declare timer
@@ -56,9 +55,6 @@ namespace FindTheLettersGame
         /*main method*/
         static void Main(string[] args)
         {
-            //put player cord by default 0,0
-            playerCords.PutCoordinates(0, 0);
-
             RemoveScrollBars();
             /*intro part*/
 

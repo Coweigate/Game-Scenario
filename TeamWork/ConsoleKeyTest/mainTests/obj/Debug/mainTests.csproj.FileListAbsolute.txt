@@ -1,0 +1,6 @@
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\bin\Debug\mainTests.exe.config
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\bin\Debug\mainTests.exe
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\bin\Debug\mainTests.pdb
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\obj\Debug\mainTests.csprojResolveAssemblyReference.cache
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\obj\Debug\mainTests.exe
+C:\Users\Bobekas\GitHubTest\ConsoleGameTeamwork\Game-Scenario\TeamWork\ConsoleKeyTest\mainTests\obj\Debug\mainTests.pdb
