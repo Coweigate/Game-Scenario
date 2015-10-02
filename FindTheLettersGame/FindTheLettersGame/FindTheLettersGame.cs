@@ -89,11 +89,24 @@ namespace FindTheLettersGame
             {
                 for (int col = 0; col < boardSize; col++)
                 {
-                    matrix[row, col] = (char)32;
+                    matrix[row, col] = ' ';
                 }
             }
             return matrix;
         }
+
+        static int pickRandomRow(Random randomPick, int boardSize)
+        {
+            int randomRow = randomPick.Next(0, boardSize);
+            return randomRow;
+        }
+
+        static int pickRandomCol(Random randomPick, int boardSize)
+        {
+            int randomCol = randomPick.Next(0, boardSize);
+            return randomCol;
+        }
+
 
         static void PrintMatrix(char[,]matrix, int boardSize)
         {
@@ -148,12 +161,18 @@ namespace FindTheLettersGame
 
             for (int i = 0; i < letters; i++)
             {
-                int randomRow = randomPick.Next(0, boardSize);
-                int randomCol = randomPick.Next(0, boardSize);
+                int randomRow = pickRandomRow(randomPick, boardSize);
+                int randomCol = pickRandomCol(randomPick, boardSize);
 
                 while (matrix[randomRow, randomCol] == ' ')
                 {
+                    while (randomRow == 0 && randomCol == 0)
+                    {
+                        randomRow = pickRandomRow(randomPick, boardSize);
+                        randomCol = pickRandomCol(randomPick, boardSize);
+                    }
                     matrix[randomRow, randomCol] = charList[i];
+                    
                 }
             }
             PrintMatrix(matrix, boardSize);
@@ -206,5 +225,7 @@ namespace FindTheLettersGame
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
         }
+
+        
     }
 }
