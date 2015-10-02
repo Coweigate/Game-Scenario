@@ -21,43 +21,50 @@ namespace FindTheLettersGame
                 x = put;
                 y = put2;
             }
-
             public void moveLeft()
             {
                 x--;
             }
-
             public void moveRight()
             {
                 x++;
             }
-
             public void moveUp()
             {
                 y--;
             }
-
             public void moveDown()
             {
                 y++;
             }
-
         }
         /*static variables*/
-        //declare playerCords
-        static PlayerCoordinates playerCords = new PlayerCoordinates();
+        //Menu variables
+        static char uncheckedField = '\u25A1'; //unchecked symbol
+        static char checkedField = '\u2612'; //checked symbol
+
+
         //declare level by default 1
         static int level = 3;
         //declare timer
         static Stopwatch timer = new Stopwatch();
-
         /*---------------------*/
-
-        /*main method*/
-        static void Main(string[] args)
+        static void Main()
         {
-            //put player cord by default 0,0
-            playerCords.PutCoordinates(0, 0);
+            //MENU PART
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field /w tabulation
+            string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
+            string[] wholeField = new[] // init the menu /w 4 fields
+            {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+
+            PrintField(wholeField);
+            wholeField[0] = wholeCheckedString; //mark the first field as checked
+            ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
+
+            PrintField(wholeField); //calling the printing method
+            ModifyFields(keyInfo, wholeField, 0);
+            //END OF MENU PART
 
             RemoveScrollBars();
             /*intro part*/
@@ -72,19 +79,58 @@ namespace FindTheLettersGame
 
             /*end of intro part*/
             MainLoop();
-
         }
-        /*----------------------*/
-        /*methods for intro part*/
+        //MENU METHODS
+        static void PrintField(string[] wholeField) //printing method
+        {
+            Console.Clear();
+            Console.WriteLine(new string('\t', 2) + "<Find The letters>");
+            Console.WriteLine(new string('\t', 1) + wholeField[0] + " Play ");
+            Console.WriteLine(new string('\t', 1) + wholeField[1] + " Instructions ");
+            Console.WriteLine(new string('\t', 1) + wholeField[2] + " High Scores ");
+            Console.WriteLine(new string('\t', 1) + wholeField[3] + " Quit ");
+        }
 
+        static void ModifyFields(ConsoleKeyInfo keyInfo, string[] field, int index)
+        {
+            while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
+            {
+                switch (keyInfo.Key)
+                {
+                    case ConsoleKey.Enter:
+                        {
+                            if (index == 0)
+                            {
+                                Console.Clear();
+                                RemoveScrollBars();
+                                MainLoop();
+                                break;
+                            }
+                            break;
+                        }
+                    case ConsoleKey.UpArrow:
+                        if (index != 0)
+                        {
+                            field[index] = new string(uncheckedField, 1);
+                            index--;
+                            field[index] = new string(checkedField, 1);
+                            PrintField(field);
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (index != field.Length - 1)
+                        {
+                            field[index] = new string(uncheckedField, 1);
+                            index++;
+                            field[index] = new string(checkedField, 1);
+                            PrintField(field);
+                        }
+                        break;
+                }
+            }
+        }
+        //END OF MENU METHODS
 
-
-
-
-
-
-        /*----------------------*/
-        /*matrix generator*/
         static char[,] CreateEmptyMatrix(int boardSize)
         {
             char[,] matrix = new char[boardSize, boardSize];
@@ -136,9 +182,7 @@ namespace FindTheLettersGame
                 }
                 Console.WriteLine();
             }
-
         }
-
 
         static void GenerateMatrix(int level)
         {
@@ -229,7 +273,5 @@ namespace FindTheLettersGame
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
         }
-
-
     }
 }
