@@ -49,7 +49,7 @@ namespace FindTheLettersGame
 
 
         //declare level by default 1
-        static int level = 2;
+        static int level = 1;
         //declare timer
         static Stopwatch timer = new Stopwatch();
         /*---------------------*/
@@ -216,17 +216,35 @@ namespace FindTheLettersGame
                     }
                 }
             }
+            else if (level == 3)
+            {
+                var reader = new StreamReader("../../Levels/level3.txt");
+                using (reader)
+                {
+                    string line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        for (int i = 0; i < matrix.GetLength(0); i++)
+                        {
+                            char[] matrixLine = new char[line.Length];
+                            matrixLine = line.ToCharArray();
+                            matrix[i] = matrixLine;
+                            line = reader.ReadLine();
+                        }
+                    }
+                }
+            }
             PrintMatrix(matrix, boardSize);
         }
 
 
         static void PrintMatrix(char[][] matrix, int boardSize)
         {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 3*boardSize/2, 4);
-
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 20, 4);
+            
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 3*boardSize/2, 4 + row);
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 20, 4 + row);
                 for (int col = 0; col < 40; col++)
                 {
                     Console.Write("{0}", matrix[row][col]);
