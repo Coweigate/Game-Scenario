@@ -10,6 +10,8 @@ namespace FindTheLettersGame
 {
     class FindTheLettersGame
     {
+
+
         //declare struct to save player's coordinates and to move him
         struct PlayerCoordinates
         {
@@ -40,8 +42,9 @@ namespace FindTheLettersGame
         }
         /*static variables*/
         //Menu variables
+
         static char uncheckedField = '\u25A1'; //unchecked symbol
-        static char checkedField = '\u2612'; //checked symbol
+        static char checkedField = '\u25A0'; //checked symbol
 
 
         //declare level by default 1
@@ -52,7 +55,7 @@ namespace FindTheLettersGame
         static void Main()
         {
             //MENU PART
-            Console.OutputEncoding = System.Text.Encoding.Unicode;
+            Console.OutputEncoding = Encoding.Unicode;
             string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field /w tabulation
             string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
             string[] wholeField = new[] // init the menu /w 4 fields
