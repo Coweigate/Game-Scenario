@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace FindTheLettersGame
 
 
         //declare level by default 1
-        static int level = 3;
+        static int level = 2;
         //declare timer
         static Stopwatch timer = new Stopwatch();
         /*---------------------*/
@@ -172,102 +173,69 @@ namespace FindTheLettersGame
         //}
         //END OF MENU METHODS
 
-        static char[,] CreateEmptyMatrix(int boardSize)
-        {
-            char[,] matrix = new char[boardSize, boardSize];
 
-            for (int row = 0; row < boardSize; row++)
-            {
-                for (int col = 0; col < boardSize; col++)
-                {
-                    matrix[row, col] = ' ';
-                }
-            }
-            return matrix;
-        }
-
-        static int pickRandomRow(Random randomPick, int boardSize)
-        {
-            int randomRow = randomPick.Next(0, boardSize);
-            return randomRow;
-        }
-
-        static int pickRandomCol(Random randomPick, int boardSize)
-        {
-            int randomCol = randomPick.Next(0, boardSize);
-            return randomCol;
-        }
-
-
-        static void PrintMatrix(char[,] matrix, int boardSize)
-        {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 5, 3);
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.BackgroundColor = ConsoleColor.Black;
-            //Console.WriteLine("Result: {0}", result);
-
-            for (int row = 0; row < boardSize; row++)
-            {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - boardSize, 5 + row);
-
-                for (int col = 0; col < boardSize; col++)
-                {
-                    if (col == boardSize - 1)
-                    {
-                        Console.WriteLine("|{0:3}|", matrix[row, col]);
-                    }
-                    else
-                    {
-                        Console.Write("|{0:3}", matrix[row, col]);
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-
+        //MAtRIX GENERATOR METHODS
         static void GenerateMatrix(int level)
         {
-            int boardSize = 0; //default board size
-            int letters = 0; //default letter count
+            int boardSize = 15;
+            char[][] matrix = new char[boardSize][];
 
-            //customizing boardsize and number of letters depending on the level  
-            switch (level)
+            if (level == 1)
             {
-                case 1: boardSize = 8; letters = 5; break; //number of letters = 5; random (65, 70)
-                case 2: boardSize = 10; letters = 8; break; //number of letters = 8; random (65, 73)
-                case 3: boardSize = 12; letters = 11; break; // number of letters = 11; random (65, 76)
-            }
-
-            char[,] matrix = CreateEmptyMatrix(boardSize);
-
-            Random randomPick = new Random();
-            List<char> charList = new List<char>
-            { 'A', 'B', 'C', 'D', 'E', 'F',
-              'G', 'H', 'I', 'J', 'K', 'L',
-              'M', 'N', 'O', 'P', 'Q', 'R',
-              'S', 'T', 'U', 'V', 'W', 'X',
-              'Y', 'Z'};
-
-            for (int i = 0; i < letters; i++)
-            {
-                int randomRow = pickRandomRow(randomPick, boardSize);
-                int randomCol = pickRandomCol(randomPick, boardSize);
-
-                while (matrix[randomRow, randomCol] == ' ')
+                var reader = new StreamReader("../../Levels/level1.txt");
+                using (reader)
                 {
-                    while (randomRow == 0 && randomCol == 0)
+                    string line = reader.ReadLine();
+                    while (line != null)
                     {
-                        randomRow = pickRandomRow(randomPick, boardSize);
-                        randomCol = pickRandomCol(randomPick, boardSize);
+                        for (int i = 0; i < matrix.GetLength(0); i++)
+                        {
+                            char[] matrixLine = new char[line.Length];
+                            matrixLine = line.ToCharArray();
+                            matrix[i] = matrixLine;
+                            line = reader.ReadLine();
+                        }
                     }
-                    matrix[randomRow, randomCol] = charList[i];
-
+                }
+            }
+            else if (level == 2)
+            {
+                var reader = new StreamReader("../../Levels/level2.txt");
+                using (reader)
+                {
+                    string line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        for (int i = 0; i < matrix.GetLength(0); i++)
+                        {
+                            char[] matrixLine = new char[line.Length];
+                            matrixLine = line.ToCharArray();
+                            matrix[i] = matrixLine;
+                            line = reader.ReadLine();
+                        }
+                    }
                 }
             }
             PrintMatrix(matrix, boardSize);
         }
 
-        /*----------------------*/
+
+        static void PrintMatrix(char[][] matrix, int boardSize)
+        {
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 3*boardSize/2, 4);
+
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 3*boardSize/2, 4 + row);
+                for (int col = 0; col < 40; col++)
+                {
+                    Console.Write("{0}", matrix[row][col]);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        //END OF MATRIX METHODS
 
         /* MAIN LOOP METHOD */
 
