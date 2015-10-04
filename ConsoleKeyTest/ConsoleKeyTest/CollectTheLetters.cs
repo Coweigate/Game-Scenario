@@ -13,16 +13,20 @@ namespace CollectTheLettersTestVersion
             Console.CursorVisible = false;
             int levelChoice = 1;//we can use random level option in the menu and a specific level option
 
+            //creating a player
+            Player player = new Player();
+
+            //enter name
+            player.PlayerName = GameMenuAndMessages.EnterName();
+
+            //drawing the player to the console
+            player.DrawPlayer();
+            player.DrawPlayerScore();
+
             //creating initial matrix
             Matrix matrix = new Matrix(levelChoice);
             //drawing the matrix to the console
             matrix.DrawMatrix();
-
-            //creating a player
-            Player player = new Player();
-            //drawing the player to the console
-            player.DrawPlayer();
-            player.DrawPlayerScore();
 
             //get 10 random letters
             int letterToCollect = 10;
@@ -43,6 +47,14 @@ namespace CollectTheLettersTestVersion
                 //looping only if key is pressed
                 while (Console.KeyAvailable)
                 {
+                    if(player.Points == letterToCollect)
+                    {
+                        //highscore
+                        Highscore.AddHighscore(player.Points, player.PlayerName);
+                        Highscore.GetHighScore();
+
+                        break;
+                    }
                     pressedKey = Console.ReadKey(true).Key;
                     //updating player location based on the pressedKey, also printing him to the console.
                     player.ChangePlayerLocation(pressedKey, matrix);

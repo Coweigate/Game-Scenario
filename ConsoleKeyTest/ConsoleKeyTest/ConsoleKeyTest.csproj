@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameMenuAndMessages.cs" />
+    <Compile Include="Highscore.cs" />
     <Compile Include="Letters.cs" />
     <Compile Include="Levels.cs" />
     <Compile Include="Matrix.cs" />
