@@ -83,14 +83,31 @@ namespace FindTheLettersGame
         //MENU METHODS
         static void PrintField(string[] wholeField) //printing method
         {
-            Console.Clear();
-            Console.WriteLine(new string('\t', 2) + "<Find The letters>");
-            Console.WriteLine(new string('\t', 1) + wholeField[0] + " Play ");
-            Console.WriteLine(new string('\t', 1) + wholeField[1] + " Instructions ");
-            Console.WriteLine(new string('\t', 1) + wholeField[2] + " High Scores ");
-            Console.WriteLine(new string('\t', 1) + wholeField[3] + " Quit ");
-        }
 
+            Console.Clear();
+            printingTheTitle();
+            Console.WriteLine();
+            centerText(wholeField[0] + " Play ");
+            centerText(wholeField[1] + " Instructions ");
+            centerText(wholeField[2] + " High Scores ");
+            centerText(wholeField[3] + " Quit ");
+        }
+        private static void centerText(String text)
+        {
+            Console.Write(new string(' ', (Console.WindowWidth - text.Length) / 2));
+            Console.WriteLine(text);
+        }
+        static void printingTheTitle()
+        {
+            string title =
+                @"    ______ _           _   _   _            _          _   _                
+    |  ___(_)         | | | | | |          | |        | | | |               
+    | |_   _ _ __   __| | | |_| |__   ___  | |     ___| |_| |_ ___ _ __ ___ 
+    |  _| | | '_ \ / _` | | __| '_ \ / _ \ | |    / _ \ __| __/ _ \ '__/ __|
+    | |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \
+    \_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/";
+            Console.WriteLine(title);
+        }
         static void ModifyFields(ConsoleKeyInfo keyInfo, string[] field, int index)
         {
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
@@ -129,6 +146,27 @@ namespace FindTheLettersGame
                 }
             }
         }
+
+        //static void QuitMenu()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine("Are you sure you want to quit? (Y/N)");
+        //    char quitCheck = new char();
+        //    do
+        //    {
+        //        quitCheck = char.Parse(Console.ReadLine());
+        //        if (quitCheck=='Y'||quitCheck=='y')
+        //        {
+        //            Console.WriteLine("Thank you for playing!");
+        //            break;
+        //            return;
+        //        }
+        //        else if (quitCheck == 'N' || quitCheck == 'n')
+        //        {
+
+        //        }
+        //    } while ((quitCheck=='Y'||quitCheck=='y')||(quitCheck == 'N' || quitCheck == 'n'));
+        //}
         //END OF MENU METHODS
 
         static char[,] CreateEmptyMatrix(int boardSize)
