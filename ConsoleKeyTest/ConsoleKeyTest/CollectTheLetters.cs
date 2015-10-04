@@ -17,6 +17,9 @@ namespace CollectTheLettersTestVersion
             Player player = new Player();
             //enter name
             player.PlayerName = GameMenuAndMessages.EnterName();
+            //highscore test
+            Highscore.AddHighscore(player.Points, player.PlayerName);
+            Highscore.GetHighScore();
             //drawing the player to the console
             player.DrawPlayer();
             player.DrawPlayerScore();
