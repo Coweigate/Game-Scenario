@@ -15,11 +15,10 @@ namespace CollectTheLettersTestVersion
 
             //creating a player
             Player player = new Player();
+
             //enter name
             player.PlayerName = GameMenuAndMessages.EnterName();
-            //highscore test
-            Highscore.AddHighscore(player.Points, player.PlayerName);
-            Highscore.GetHighScore();
+
             //drawing the player to the console
             player.DrawPlayer();
             player.DrawPlayerScore();
@@ -48,6 +47,14 @@ namespace CollectTheLettersTestVersion
                 //looping only if key is pressed
                 while (Console.KeyAvailable)
                 {
+                    if(player.Points == letterToCollect)
+                    {
+                        //highscore
+                        Highscore.AddHighscore(player.Points, player.PlayerName);
+                        Highscore.GetHighScore();
+
+                        break;
+                    }
                     pressedKey = Console.ReadKey(true).Key;
                     //updating player location based on the pressedKey, also printing him to the console.
                     player.ChangePlayerLocation(pressedKey, matrix);

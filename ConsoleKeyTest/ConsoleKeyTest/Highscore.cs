@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Threading;
 
 namespace CollectTheLettersTestVersion
 {
@@ -10,16 +11,36 @@ namespace CollectTheLettersTestVersion
     {
         public static void GetHighScore()
         {
+            int width = Console.WindowWidth;
+            int height = Console.WindowHeight;
+
+            Console.SetCursorPosition((width / 2) - 8, (height / 2) -8);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("-=| Highscore |=-");
+
+            int count = 0;
             using (var highscore = new StreamReader("highscore.txt"))
             {
                 string line = highscore.ReadLine();
                 while(line != null)
                 {
+                    count++;
+                    if(count == 1)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 7 + count*2);
                     Console.WriteLine(line);
                     line = highscore.ReadLine();
                 }
             }
+            Thread.Sleep(4000);
         }
+
         public static void AddHighscore(int score, string name)
         {
             bool ifNotAddScore = true;

@@ -79,7 +79,7 @@ namespace CollectTheLettersTestVersion
 
         public void DrawPlayerScore()
         {
-            Console.SetCursorPosition((Console.WindowWidth) / 2 + 1, Console.WindowHeight - 3);
+            Console.SetCursorPosition((Console.WindowWidth) / 2 - 4, Console.WindowHeight - 3);
             Console.Write("Score: {0}", points);
         }
 
