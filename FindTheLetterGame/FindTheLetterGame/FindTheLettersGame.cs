@@ -56,6 +56,7 @@ namespace FindTheLettersGame
         static void Main()
         {
             //MENU PART
+            RemoveScrollBars();
             Console.OutputEncoding = Encoding.Unicode;
             string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field /w tabulation
             string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
@@ -70,7 +71,7 @@ namespace FindTheLettersGame
             ModifyFields(keyInfo, wholeField, 0);
             //END OF MENU PART
 
-            RemoveScrollBars();
+            //RemoveScrollBars();
             /*intro part*/
 
             //shows the title of the game
