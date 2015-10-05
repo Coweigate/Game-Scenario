@@ -16,29 +16,16 @@ namespace CollectTheLettersTestVersion
 
             Console.Clear();
             //drawing game name
-            Console.SetCursorPosition((width / 2) - 36, 0);
-            Console.Write(@"______ _           _   _   _            _          _   _                 ");
-            Console.SetCursorPosition((width / 2) - 36, 1);
-            Console.Write(@"|  ___(_)         | | | | | |          | |        | | | |                ");
-            Console.SetCursorPosition((width / 2) - 36, 2);
-            Console.Write(@"| |_   _ _ __   __| | | |_| |__   ___  | |     ___| |_| |_ ___ _ __ ___  ");
-            Console.SetCursorPosition((width / 2) - 36, 3);
-            Console.Write(@"|  _| | | '_ \ / _` | | __| '_ \ / _ \ | |    / _ \ __| __/ _ \ '__/ __| ");
-            Console.SetCursorPosition((width / 2) - 36, 4);
-            Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
-            Console.SetCursorPosition((width / 2) - 36, 5);
-            Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
+            GameMenuAndMessages.printingTheTitle();
             //drawing lines
             Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
             Console.WriteLine("===================================================================");
             Console.SetCursorPosition((width / 2) - 34, (height / 2) + 8);
             Console.WriteLine("===================================================================");
             //Positioning header
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.SetCursorPosition((width / 2) - 8, (height / 2) - 5);
             Console.WriteLine("-=| Highscore |=-");
-            //info text
-            Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
-            Console.WriteLine("PRESS ANY KAY TO BACK");
 
             //get all the Lines from file and print them
             int count = 0;
@@ -50,17 +37,20 @@ namespace CollectTheLettersTestVersion
                     count++;
                     if(count == 1)
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
                     }
                     else
                     {
-                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
                     }
-                    Console.BackgroundColor = ConsoleColor.Black;
                     Console.SetCursorPosition((width / 2) - 6, (height / 2) - 4 + count*2);
                     Console.WriteLine(line);
                     line = highscore.ReadLine();
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+                //info text
+                Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
+                Console.WriteLine("PRESS ANY KAY TO BACK");
             }
         }
 

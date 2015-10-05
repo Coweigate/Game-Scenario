@@ -5,38 +5,52 @@ using System.Threading;
 
 namespace CollectTheLettersTestVersion
 {
-	class MainClass
-	{
+    class MainClass
+    {
         public static bool menu = true;
         public static int width = Console.WindowWidth;
         public static int height = Console.WindowHeight;
 
+        //Menu variables
+
+        public static char uncheckedField = '\u25A1'; //unchecked symbol
+        public static char checkedField = '\u25A0'; //checked symbol
+        public static string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field
+        public static string wholeCheckedString = new string(checkedField, 1); //creating the checked field
+        public static string[] mainMenuField = new[] // init the main menu /w 4 fields
+        {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+        public static string[] subMenuField = new[] // init the submenu /w 4 fields
+        {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+
+
         public static void Main()
         {
-            
 
             Console.CursorVisible = false;
-            int levelChoice = 1;//we can use random level option in the menu and a specific level option
+            int levelChoice = 1;
+
+            //we can use random level option in the menu and a specific level option
 
             //MENU PART
 
             if (menu)
             {
-                char uncheckedField = '\u25A1'; //unchecked symbol
-                char checkedField = '\u25A0'; //checked symbol
-                GameMenuAndMessages.RemoveScrollBars();
+
+                //mainMenuField[0] = wholeCheckedString; //mark the first field as checked
+                //subMenuField[0] = wholeCheckedString;
                 Console.OutputEncoding = Encoding.Unicode;
                 string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field /w tabulation
                 string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
                 string[] wholeField = new[] // init the menu /w 4 fields
                 {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
 
-                GameMenuAndMessages.PrintField(wholeField);
+                GameMenuAndMessages.PrintMainMenu(wholeField);
                 wholeField[0] = wholeCheckedString; //mark the first field as checked
                 ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
 
-                GameMenuAndMessages.PrintField(wholeField); //calling the printing method
-                GameMenuAndMessages.ModifyFields(keyInfo, wholeField, 0);
+                GameMenuAndMessages.PrintMainMenu(wholeField); //calling the printing method
+                GameMenuAndMessages.ModifyMainMenu(keyInfo, mainMenuField, 0);
+                //  GameMenuAndMessages.ModifyFields(keyInfo, wholeField, 0);
 
             }
             //creating a player
@@ -56,7 +70,7 @@ namespace CollectTheLettersTestVersion
             for (int i = 0; i < letterToCollect; i++)
             {
                 lettersToWrite.Add(new Letters(matrix));
-                Thread.Sleep(40);                
+                Thread.Sleep(40);
             }
             //drawing the player to the console inside the matrix
             for (int i = 0; i < lettersToWrite.Count; i++)
@@ -89,11 +103,12 @@ namespace CollectTheLettersTestVersion
 
             //getting user input(pressed key)
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
-            while (pressedKey != ConsoleKey.Escape) {
+            while (pressedKey != ConsoleKey.Escape)
+            {
                 //looping only if key is pressed
                 while (Console.KeyAvailable)
                 {
-                    if(player.Points == letterToCollect)
+                    if (player.Points == letterToCollect)
                     {
                         //highscore
                         menu = true;
@@ -115,12 +130,12 @@ namespace CollectTheLettersTestVersion
                             lettersToWrite[i].isCollected = true;
                         }
                     }
-                } 
+                }
             }
 
             //press any key to continue message
             Console.SetCursorPosition(0, Console.WindowHeight - 2);
             Console.WriteLine();
-        }     
-	}
+        }
+    }
 }
