@@ -192,13 +192,21 @@ namespace CollectTheLettersTestVersion
                 }
             }
         }
+        
+        public static void ClearText()
+        {
+            for (int i = -6; i <= 7; i++)
+            {
+                Console.SetCursorPosition(0, i + Console.WindowHeight / 2);
+                Console.WriteLine(new string(' ', Console.WindowWidth));
+            }
+        }
 
         public static string EnterName()
         {
 
             //name validation
-
-            Console.Clear();
+            ClearText();
             //drawing game name
 
             printingTheTitle();
@@ -235,7 +243,7 @@ namespace CollectTheLettersTestVersion
                 }
                 else
                 {
-                    Console.Clear();
+                    ClearText();
                     Console.CursorVisible = false;
                     return name.ToString();
                 }

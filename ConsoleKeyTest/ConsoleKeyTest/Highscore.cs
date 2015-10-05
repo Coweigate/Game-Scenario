@@ -14,7 +14,7 @@ namespace CollectTheLettersTestVersion
             int width = Console.WindowWidth;
             int height = Console.WindowHeight;
 
-            Console.Clear();
+            GameMenuAndMessages.ClearText();
             //drawing game name
             GameMenuAndMessages.printingTheTitle();
             //drawing lines
