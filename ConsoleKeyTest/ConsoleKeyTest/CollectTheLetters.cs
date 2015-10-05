@@ -43,7 +43,7 @@ namespace CollectTheLettersTestVersion
                 string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
                 string[] wholeField = new[] // init the menu /w 4 fields
                 {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
-
+                wholeField[0] = wholeCheckedString;
                 GameMenuAndMessages.PrintMainMenu(wholeField);
                 wholeField[0] = wholeCheckedString; //mark the first field as checked
                 ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();

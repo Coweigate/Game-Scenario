@@ -89,7 +89,12 @@ namespace CollectTheLettersTestVersion
                             if (index == 0)
                             {
                                 Console.Clear();
-                                PrintSubmenu(field);
+                                string wholeUncheckedString = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
+                                string wholeCheckedString = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
+                                string[] wholeField = new[] // init the menu /w 4 fields
+                                {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+                                wholeField[0] = wholeCheckedString;
+                                PrintSubmenu(wholeField);
                                 ModifySubmenu(keyInfo, MainClass.subMenuField, 0);
                                 return;
                             }
@@ -155,7 +160,12 @@ namespace CollectTheLettersTestVersion
                                 MainClass.subMenuField = new[] // reset the fields
                                 {MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString};
                                 //Console.Clear();
-                                PrintMainMenu(MainClass.mainMenuField); //calling the printing method
+                                string wholeUncheckedString = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
+                                string wholeCheckedString = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
+                                string[] wholeField = new[] // init the menu /w 4 fields
+                                {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+                                wholeField[0] = wholeCheckedString;
+                                PrintMainMenu(wholeField);
                                 ModifyMainMenu(keyInfo, MainClass.mainMenuField, 0);
                             }
                             break;
@@ -175,6 +185,7 @@ namespace CollectTheLettersTestVersion
                             field[index] = new string(MainClass.uncheckedField, 1);
                             index++;
                             field[index] = new string(MainClass.checkedField, 1);
+
                             PrintSubmenu(field);
                         }
                         break;
