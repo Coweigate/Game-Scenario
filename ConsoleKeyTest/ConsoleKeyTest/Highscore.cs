@@ -28,15 +28,15 @@ namespace CollectTheLettersTestVersion
             Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
             Console.SetCursorPosition((width / 2) - 36, 5);
             Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
-            //Positioning header
-            Console.SetCursorPosition((width / 2) - 8, (height / 2) -5);
-            Console.WriteLine("-=| Highscore |=-");
+            //drawing lines
             Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
             Console.WriteLine("===================================================================");
             Console.SetCursorPosition((width / 2) - 34, (height / 2) + 8);
             Console.WriteLine("===================================================================");
+            //Positioning header
+            Console.SetCursorPosition((width / 2) - 8, (height / 2) - 5);
+            Console.WriteLine("-=| Highscore |=-");
             //info text
-            Console.BackgroundColor = ConsoleColor.Red;
             Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
             Console.WriteLine("PRESS ANY KAY TO BACK");
 

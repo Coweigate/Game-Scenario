@@ -51,7 +51,7 @@ namespace CollectTheLettersTestVersion
             matrix.DrawMatrix();
 
             //get 10 random letters
-            int letterToCollect = 10;
+            int letterToCollect = 6;
             List<Letters> lettersToWrite = new List<Letters>();
             for (int i = 0; i < letterToCollect; i++)
             {
@@ -63,6 +63,25 @@ namespace CollectTheLettersTestVersion
             {
                 lettersToWrite[i].DrawLetter();
             }
+
+            //drawing game name
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 0);
+            Console.Write(@"______ _           _   _   _            _          _   _                 ");
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 1);
+            Console.Write(@"|  ___(_)         | | | | | |          | |        | | | |                ");
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 2);
+            Console.Write(@"| |_   _ _ __   __| | | |_| |__   ___  | |     ___| |_| |_ ___ _ __ ___  ");
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 3);
+            Console.Write(@"|  _| | | '_ \ / _` | | __| '_ \ / _ \ | |    / _ \ __| __/ _ \ '__/ __| ");
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 4);
+            Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
+            Console.SetCursorPosition((MainClass.width / 2) - 36, 5);
+            Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
+            //drawing lines
+            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
+            Console.WriteLine("===================================================================");
+            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 8);
+            Console.WriteLine("===================================================================");
 
             //drawing the player to the console
             player.DrawPlayer();
@@ -77,10 +96,10 @@ namespace CollectTheLettersTestVersion
                     if(player.Points == letterToCollect)
                     {
                         //highscore
+                        menu = true;
                         Highscore.AddHighscore(player.Points, player.PlayerName);
-                        Highscore.GetHighScore();
-
-                        break;
+                        Main();
+                        return;
                     }
                     pressedKey = Console.ReadKey(true).Key;
                     //updating player location based on the pressedKey, also printing him to the console.

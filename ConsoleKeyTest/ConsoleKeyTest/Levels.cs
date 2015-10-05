@@ -9,7 +9,7 @@ namespace CollectTheLettersTestVersion
     {
         public static string[,] LevelOne()
         {
-            string[,] matrix = new string[64, 20];
+            string[,] matrix = new string[36, 11];
 
             //initializing the matrix
             for (int i = 0; i < matrix.GetLength(0); i++)

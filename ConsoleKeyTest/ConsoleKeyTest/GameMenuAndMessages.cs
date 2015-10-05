@@ -158,10 +158,9 @@ namespace CollectTheLettersTestVersion
                 name.Append(Console.ReadLine());
                 if (Regex.Match(name.ToString(), @"[-!$%^&*()_+|~=`{}\[\]:; '<>?,.\/]").Success || name.Length < 3 || name.Length > 10)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition((MainClass.width / 2) - 12, (MainClass.height / 2) - 7);
+                    Console.SetCursorPosition((MainClass.width / 2) - 12, (MainClass.height / 2) - 3);
                     Console.WriteLine("Invalid name, try again!");
-                    Console.SetCursorPosition((MainClass.width / 2) - 4, (MainClass.height / 2) - 3);
+                    Console.SetCursorPosition((MainClass.width / 2) - 4, (MainClass.height / 2) - 1);
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("                                  ");
                 }
