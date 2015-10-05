@@ -50,7 +50,7 @@ namespace CollectTheLettersTestVersion
                 Console.ForegroundColor = ConsoleColor.White;
                 //info text
                 Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
-                Console.WriteLine("PRESS ANY KAY TO BACK");
+                Console.WriteLine("PRESS ANY KEY TO BACK");
             }
         }
 
