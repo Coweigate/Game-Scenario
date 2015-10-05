@@ -13,7 +13,7 @@ namespace CollectTheLettersTestVersion
         public static void PrintMainMenu(string[] wholeField) //printing method
         {
 
-            Console.Clear();
+            ClearText();
             printingTheTitle();
             Console.SetCursorPosition(0, 13);
             centerText("MENU ");
@@ -30,7 +30,7 @@ namespace CollectTheLettersTestVersion
         }
         static void PrintSubmenu(string[] wholeField)
         {
-            Console.Clear();
+            ClearText();
             printingTheTitle();
             Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
             Console.WriteLine("===================================================================");
@@ -88,12 +88,12 @@ namespace CollectTheLettersTestVersion
                         {
                             if (index == 0)
                             {
-                                Console.Clear();
                                 string wholeUncheckedString = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
                                 string wholeCheckedString = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
                                 string[] wholeField = new[] // init the menu /w 4 fields
                                 {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
                                 wholeField[0] = wholeCheckedString;
+                                ClearText();
                                 PrintSubmenu(wholeField);
                                 ModifySubmenu(keyInfo, MainClass.subMenuField, 0);
                                 return;
@@ -109,7 +109,7 @@ namespace CollectTheLettersTestVersion
                             }
                             if (index == 3)
                             {
-                                Console.Clear();
+                                ClearText();
                                 centerText("Thank you for playing!\n");
                                 Environment.Exit(0);
                             }
@@ -134,7 +134,12 @@ namespace CollectTheLettersTestVersion
                         }
                         break;
                     default:
-                        PrintMainMenu(field);
+                        string wholeUncheckedString2 = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
+                        string wholeCheckedString2 = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
+                        string[] wholeField2 = new[] // init the menu /w 4 fields
+                        {wholeUncheckedString2, wholeUncheckedString2, wholeUncheckedString2, wholeUncheckedString2};
+                        wholeField2[index] = wholeCheckedString2;
+                        PrintMainMenu(wholeField2);
                         break;
                 }
             }
@@ -142,6 +147,11 @@ namespace CollectTheLettersTestVersion
 
         public static void ModifySubmenu(ConsoleKeyInfo keyInfo, string[] field, int index = 0)
         {
+            string wholeUncheckedString = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
+            string wholeCheckedString = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
+            string[] wholeField = new[] // init the menu /w 4 fields
+            {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+            wholeField[0] = wholeCheckedString;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 switch (keyInfo.Key)
@@ -160,10 +170,6 @@ namespace CollectTheLettersTestVersion
                                 MainClass.subMenuField = new[] // reset the fields
                                 {MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString};
                                 //Console.Clear();
-                                string wholeUncheckedString = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
-                                string wholeCheckedString = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
-                                string[] wholeField = new[] // init the menu /w 4 fields
-                                {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
                                 wholeField[0] = wholeCheckedString;
                                 PrintMainMenu(wholeField);
                                 ModifyMainMenu(keyInfo, MainClass.mainMenuField, 0);
@@ -226,19 +232,18 @@ namespace CollectTheLettersTestVersion
             Console.Write("[containing only letters (A to Z) and numbers (0 to 9]");
             StringBuilder name = new StringBuilder();
             //validate player name
+            Console.ForegroundColor = ConsoleColor.White;
             while (true)
             {
                 Console.CursorVisible = true;
                 name = new StringBuilder();
                 Console.SetCursorPosition((MainClass.width / 2) - 4, (MainClass.height / 2) - 1);
-                Console.BackgroundColor = ConsoleColor.Black;
                 name.Append(Console.ReadLine());
                 if (Regex.Match(name.ToString(), @"[-!$%^&*()_+|~=`{}\[\]:; '<>?,.\/]").Success || name.Length < 3 || name.Length > 10)
                 {
                     Console.SetCursorPosition((MainClass.width / 2) - 12, (MainClass.height / 2) - 3);
                     Console.WriteLine("Invalid name, try again!");
                     Console.SetCursorPosition((MainClass.width / 2) - 4, (MainClass.height / 2) - 1);
-                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("                                  ");
                 }
                 else
