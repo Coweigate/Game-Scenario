@@ -14,10 +14,33 @@ namespace CollectTheLettersTestVersion
             int width = Console.WindowWidth;
             int height = Console.WindowHeight;
 
-            Console.SetCursorPosition((width / 2) - 8, (height / 2) -8);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Clear();
+            //drawing game name
+            Console.SetCursorPosition((width / 2) - 36, 0);
+            Console.Write(@"______ _           _   _   _            _          _   _                 ");
+            Console.SetCursorPosition((width / 2) - 36, 1);
+            Console.Write(@"|  ___(_)         | | | | | |          | |        | | | |                ");
+            Console.SetCursorPosition((width / 2) - 36, 2);
+            Console.Write(@"| |_   _ _ __   __| | | |_| |__   ___  | |     ___| |_| |_ ___ _ __ ___  ");
+            Console.SetCursorPosition((width / 2) - 36, 3);
+            Console.Write(@"|  _| | | '_ \ / _` | | __| '_ \ / _ \ | |    / _ \ __| __/ _ \ '__/ __| ");
+            Console.SetCursorPosition((width / 2) - 36, 4);
+            Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
+            Console.SetCursorPosition((width / 2) - 36, 5);
+            Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
+            //Positioning header
+            Console.SetCursorPosition((width / 2) - 8, (height / 2) -5);
             Console.WriteLine("-=| Highscore |=-");
+            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
+            Console.WriteLine("===================================================================");
+            Console.SetCursorPosition((width / 2) - 34, (height / 2) + 8);
+            Console.WriteLine("===================================================================");
+            //info text
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
+            Console.WriteLine("PRESS ANY KAY TO BACK");
 
+            //get all the Lines from file and print them
             int count = 0;
             using (var highscore = new StreamReader("highscore.txt"))
             {
@@ -33,18 +56,19 @@ namespace CollectTheLettersTestVersion
                     {
                         Console.ForegroundColor = ConsoleColor.White;
                     }
-                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 7 + count*2);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 4 + count*2);
                     Console.WriteLine(line);
                     line = highscore.ReadLine();
                 }
             }
-            Thread.Sleep(4000);
         }
 
         public static void AddHighscore(int score, string name)
         {
             bool ifNotAddScore = true;
             List<string> updateHighscore = new List<string>();
+            //compare results
             using (var highscore = new StreamReader("highscore.txt"))
             {
                 string line = highscore.ReadLine();
@@ -61,11 +85,13 @@ namespace CollectTheLettersTestVersion
                     line = highscore.ReadLine();
                 }
             }
+            //if no highscore
             if(ifNotAddScore)
             {
                 updateHighscore.Add(name + " " + score);
                 ifNotAddScore = false;
             }
+            //if compare highscore is the lowest
             if(!ifNotAddScore)
             {
                 using (var writeScore = new StreamWriter("highscore.txt"))

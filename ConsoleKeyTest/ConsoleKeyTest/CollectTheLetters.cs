@@ -1,27 +1,49 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 
 namespace CollectTheLettersTestVersion
 {
 	class MainClass
 	{
+        public static bool menu = true;
+        public static int width = Console.WindowWidth;
+        public static int height = Console.WindowHeight;
+
         public static void Main()
         {
-            Console.WriteLine("To stop the game press ESC.\t\tFor movement use 'W', 'S', 'A' and 'D'");
+            
 
             Console.CursorVisible = false;
             int levelChoice = 1;//we can use random level option in the menu and a specific level option
 
+            //MENU PART
+
+            if (menu)
+            {
+                char uncheckedField = '\u25A1'; //unchecked symbol
+                char checkedField = '\u25A0'; //checked symbol
+                GameMenuAndMessages.RemoveScrollBars();
+                Console.OutputEncoding = Encoding.Unicode;
+                string wholeUncheckedString = new string(uncheckedField, 1); //creating the unchecked field /w tabulation
+                string wholeCheckedString = new string(checkedField, 1); //creating the checked field /w tabulation
+                string[] wholeField = new[] // init the menu /w 4 fields
+                {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
+
+                GameMenuAndMessages.PrintField(wholeField);
+                wholeField[0] = wholeCheckedString; //mark the first field as checked
+                ConsoleKeyInfo keyInfo = new ConsoleKeyInfo();
+
+                GameMenuAndMessages.PrintField(wholeField); //calling the printing method
+                GameMenuAndMessages.ModifyFields(keyInfo, wholeField, 0);
+
+            }
             //creating a player
             Player player = new Player();
 
             //enter name
             player.PlayerName = GameMenuAndMessages.EnterName();
-
-            //drawing the player to the console
-            player.DrawPlayer();
-            player.DrawPlayerScore();
 
             //creating initial matrix
             Matrix matrix = new Matrix(levelChoice);
@@ -41,6 +63,11 @@ namespace CollectTheLettersTestVersion
             {
                 lettersToWrite[i].DrawLetter();
             }
+
+            //drawing the player to the console
+            player.DrawPlayer();
+            player.DrawPlayerScore();
+
             //getting user input(pressed key)
             ConsoleKey pressedKey = Console.ReadKey(true).Key;
             while (pressedKey != ConsoleKey.Escape) {
@@ -75,6 +102,6 @@ namespace CollectTheLettersTestVersion
             //press any key to continue message
             Console.SetCursorPosition(0, Console.WindowHeight - 2);
             Console.WriteLine();
-        }        
+        }     
 	}
 }
