@@ -128,6 +128,9 @@ namespace CollectTheLettersTestVersion
                             PrintMainMenu(field);
                         }
                         break;
+                    default:
+                        PrintMainMenu(field);
+                        break;
                 }
             }
         }
