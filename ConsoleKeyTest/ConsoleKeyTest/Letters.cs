@@ -8,10 +8,9 @@ namespace CollectTheLettersTestVersion
     class Letters
     {
         public char letter;
-        public bool isCollected = false;
         char[] letters = new char[26];
         int leftBorder, rightBorder, topBorder, bottomBorder, randomXPosition, randomYPosition;
-        Random randomGenerator = new Random(); 
+        Random randomGenerator; 
         
         public int X
         {
@@ -23,7 +22,7 @@ namespace CollectTheLettersTestVersion
             get { return randomYPosition; }
         }
 
-        public Letters(Matrix matrix) {
+        public Letters(Matrix matrix, Random random) {
             //filling the matrix with letters from [65]A to[90]Z
             int num = 65;
             for (int i = 0; i < letters.Length; i++)
@@ -31,6 +30,7 @@ namespace CollectTheLettersTestVersion
                 letters[i] = (char)num;
                 num++;
             }
+            randomGenerator = random;
             //getting the matrix borders
             leftBorder = matrix.leftBorder + 1;
             rightBorder = matrix.rightBorder;

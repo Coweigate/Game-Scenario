@@ -65,17 +65,22 @@ namespace CollectTheLettersTestVersion
             matrix.DrawMatrix();
 
             //get 10 random letters
+            Random randomNumGenerator = new Random();
             int letterToCollect = 6;
             List<Letters> lettersToWrite = new List<Letters>();
             for (int i = 0; i < letterToCollect; i++)
             {
-                lettersToWrite.Add(new Letters(matrix));
-                Thread.Sleep(40);
+                lettersToWrite.Add(new Letters(matrix, randomNumGenerator));
             }
             //drawing the player to the console inside the matrix
-            for (int i = 0; i < lettersToWrite.Count; i++)
+            lettersToWrite[0].DrawLetter();
+            for (int i = 0; i < lettersToWrite.Count - 1; i++)
             {
-                lettersToWrite[i].DrawLetter();
+                while (lettersToWrite[i].X == lettersToWrite[i + 1].X && lettersToWrite[i].Y == lettersToWrite[i + 1].Y)
+                {
+                    lettersToWrite[i + 1].GetRandomPosition();
+                }
+                lettersToWrite[i + 1].DrawLetter();
             }
 
             //drawing game name
@@ -122,12 +127,12 @@ namespace CollectTheLettersTestVersion
                     //check if the player steped on a letter
                     for (int i = 0; i < lettersToWrite.Count; i++)
                     {
-                        if (player.X == (lettersToWrite[i].X) && player.Y == (lettersToWrite[i].Y) && !lettersToWrite[i].isCollected)
+                        if (player.X == (lettersToWrite[i].X) && player.Y == (lettersToWrite[i].Y))
                         {
                             player.GetPoint();
                             player.DrawPlayerScore();
-                            lettersToWrite[i].letter = ' ';
-                            lettersToWrite[i].isCollected = true;
+                            lettersToWrite.RemoveAt(i);
+                            break;
                         }
                     }
                 }
