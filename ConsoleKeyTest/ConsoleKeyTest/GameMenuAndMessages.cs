@@ -48,7 +48,7 @@ namespace CollectTheLettersTestVersion
 
         private static void centerText(String text)
         {
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(new string(' ', (Console.WindowWidth - text.Length) / 2));
             Console.WriteLine(text);
             Console.ResetColor();
@@ -57,6 +57,7 @@ namespace CollectTheLettersTestVersion
         {
 
             //drawing game name
+            Console.ForegroundColor=ConsoleColor.Cyan;
             Console.SetCursorPosition((MainClass.width / 2) - 36, 0);
             Console.Write(@"______ _           _   _   _            _          _   _                 ");
             Console.SetCursorPosition((MainClass.width / 2) - 36, 1);
@@ -69,6 +70,7 @@ namespace CollectTheLettersTestVersion
             Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
             Console.SetCursorPosition((MainClass.width / 2) - 36, 5);
             Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
+            Console.ResetColor();
         }
         //remove scrollbars of the console
         static void RemoveScrollBars()
