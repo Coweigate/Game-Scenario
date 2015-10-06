@@ -1,0 +1,5 @@
+Find the Letters Game instructions
+
+1. Your aim is to collect alphabetically all the letters on the board for certain time
+2. Use your arrow keys to navigate the cursor on the board up, down, left and right.
+
