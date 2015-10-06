@@ -110,7 +110,9 @@ namespace CollectTheLettersTestVersion
                             if (index == 3)
                             {
                                 ClearText();
+                                Console.SetCursorPosition(0, Console.WindowHeight / 2);
                                 centerText("Thank you for playing!\n");
+                                Console.SetCursorPosition(Console.WindowWidth / 2 - 16, Console.WindowHeight / 2 + 2);
                                 Environment.Exit(0);
                             }
                             break;
