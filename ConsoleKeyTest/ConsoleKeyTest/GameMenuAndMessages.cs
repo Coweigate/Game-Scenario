@@ -206,6 +206,10 @@ namespace CollectTheLettersTestVersion
                 Console.SetCursorPosition(0, i + Console.WindowHeight / 2);
                 Console.WriteLine(new string(' ', Console.WindowWidth));
             }
+            Console.SetCursorPosition(0, Console.WindowHeight / 2 + 11);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.WindowHeight - 3);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
         }
 
         public static string EnterName()
@@ -243,8 +247,10 @@ namespace CollectTheLettersTestVersion
                 {
                     Console.SetCursorPosition((MainClass.width / 2) - 12, (MainClass.height / 2) - 3);
                     Console.WriteLine("Invalid name, try again!");
-                    Console.SetCursorPosition((MainClass.width / 2) - 4, (MainClass.height / 2) - 1);
-                    Console.WriteLine("                                  ");
+                    Console.SetCursorPosition(0, (MainClass.height / 2) - 1);
+                    Console.WriteLine(new string(' ', Console.WindowWidth));
+                    Console.SetCursorPosition(0, (MainClass.height / 2));
+                    Console.WriteLine(new string(' ', Console.WindowWidth));
                 }
                 else
                 {
