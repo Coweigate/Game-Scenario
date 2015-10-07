@@ -25,6 +25,7 @@ namespace CollectTheLettersTestVersion
             Console.WriteLine("| HIGHSCORE |");
 
             //get all the Lines from file and print them
+            StringBuilder outputLine = new StringBuilder();
             int count = 0;
             using (var highscore = new StreamReader("highscore.txt"))
             {
@@ -40,8 +41,10 @@ namespace CollectTheLettersTestVersion
                     {
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                     }
-                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 7 + count*2);
-                    Console.WriteLine(line);
+                    Console.SetCursorPosition((width / 2) - 9, (height / 2) - 7 + count*2);
+                    outputLine = new StringBuilder();
+                    outputLine.Append(line.Split(' ')[0].PadRight(5) + line.Split(' ')[1].PadRight(12) + line.Split(' ')[2].PadRight(5));
+                    Console.WriteLine(outputLine);
                     line = highscore.ReadLine();
                 }
                 Console.ForegroundColor = ConsoleColor.White;
