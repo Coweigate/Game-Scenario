@@ -178,7 +178,7 @@ namespace FindTheLettersGame
         //MAtRIX GENERATOR METHODS
         static void GenerateMatrix(int level)
         {
-            int boardSize = 30;
+            int boardSize = 24;
             char[][] matrix = new char[boardSize][];
 
             if (level == 1)
@@ -246,7 +246,7 @@ namespace FindTheLettersGame
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
                 Console.SetCursorPosition(Console.WindowWidth / 2 - 30, 4 + row);
-                for (int col = 0; col < 60; col++)
+                for (int col = 0; col < 56; col++)
                 {
                     Console.Write("{0}", matrix[row][col]);
                 }
