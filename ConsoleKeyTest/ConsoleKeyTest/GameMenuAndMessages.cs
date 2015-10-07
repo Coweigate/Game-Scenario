@@ -46,6 +46,18 @@ namespace CollectTheLettersTestVersion
             Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 9);
             Console.WriteLine("===================================================================");
         }
+        public static void ClearText()
+        {
+            for (int i = 8; i <= 26; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine(new string(' ', Console.WindowWidth));
+            }
+            Console.SetCursorPosition(0, Console.WindowHeight / 2 + 11);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.WindowHeight - 3);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+        }
         public static void ClearFrame()
         {
             Console.SetCursorPosition(0, 7);
@@ -221,19 +233,6 @@ namespace CollectTheLettersTestVersion
                         break;
                 }
             }
-        }
-        
-        public static void ClearText()
-        {
-            for (int i = -6; i <= 7; i++)
-            {
-                Console.SetCursorPosition(0, i + Console.WindowHeight / 2);
-                Console.WriteLine(new string(' ', Console.WindowWidth));
-            }
-            Console.SetCursorPosition(0, Console.WindowHeight / 2 + 11);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.WindowHeight - 3);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
         }
 
         public static string EnterName()
