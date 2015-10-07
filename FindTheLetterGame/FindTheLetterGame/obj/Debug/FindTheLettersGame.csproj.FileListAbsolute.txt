@@ -1,0 +1,6 @@
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\bin\Debug\FindTheLetterGame.exe.config
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\obj\Debug\FindTheLetterGame.pdb
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\bin\Debug\FindTheLetterGame.exe
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\bin\Debug\FindTheLetterGame.pdb
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\obj\Debug\FindTheLettersGame.csprojResolveAssemblyReference.cache
+E:\GameProject\Coweigate\FindTheLetterGame\FindTheLetterGame\obj\Debug\FindTheLetterGame.exe

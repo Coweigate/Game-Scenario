@@ -20,7 +20,11 @@ namespace CollectTheLettersTestVersion
         public void CreateMatrix() {
             switch (chosenLevel) {
                 case 1:
-                    matrix = Levels.LevelOne();                    
+                    matrix = Levels.LevelOne();                
+                    break;
+                case 2:
+                    break;
+                case 3:
                     break;
                 default:
                     matrix = Levels.LevelOne();
@@ -31,7 +35,7 @@ namespace CollectTheLettersTestVersion
             }
             //to position the cursor
             matrixPositionX = (Console.WindowWidth - matrix.GetLength(0)) / 2;
-            matrixPositionY = (Console.WindowHeight - matrix.GetLength(1)) / 2 + 1;
+            matrixPositionY = (Console.WindowHeight - matrix.GetLength(1)) / 2 + 3;
 
             //getting the matrix borders to limit the player movements(to not be able to move outside the matrix)
             leftBorder = matrixPositionX;            

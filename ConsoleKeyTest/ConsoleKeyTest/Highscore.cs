@@ -18,14 +18,11 @@ namespace CollectTheLettersTestVersion
             //drawing game name
             GameMenuAndMessages.printingTheTitle();
             //drawing lines
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
-            Console.WriteLine("===================================================================");
-            Console.SetCursorPosition((width / 2) - 34, (height / 2) + 8);
-            Console.WriteLine("===================================================================");
+            GameMenuAndMessages.printFrame();
             //Positioning header
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.SetCursorPosition((width / 2) - 8, (height / 2) - 5);
-            Console.WriteLine("-=| Highscore |=-");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition((width / 2) - 6, 9);
+            Console.WriteLine("| HIGHSCORE |");
 
             //get all the Lines from file and print them
             int count = 0;
@@ -37,19 +34,19 @@ namespace CollectTheLettersTestVersion
                     count++;
                     if(count == 1)
                     {
-                        Console.ForegroundColor = ConsoleColor.DarkCyan;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                     }
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                     }
-                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 4 + count*2);
+                    Console.SetCursorPosition((width / 2) - 6, (height / 2) - 7 + count*2);
                     Console.WriteLine(line);
                     line = highscore.ReadLine();
                 }
                 Console.ForegroundColor = ConsoleColor.White;
                 //info text
-                Console.SetCursorPosition((width / 2) - 10, (height / 2) + 11);
+                Console.SetCursorPosition((width / 2) - 10, 26);
                 Console.WriteLine("PRESS ANY KEY TO BACK");
             }
         }

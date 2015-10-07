@@ -23,19 +23,13 @@ namespace CollectTheLettersTestVersion
             centerText(wholeField[2] + " High Scores ");
             centerText(wholeField[3] + " Quit ");
             //drawing lines
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
-            Console.WriteLine("===================================================================");
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 8);
-            Console.WriteLine("===================================================================");
+            printFrame();
         }
         static void PrintSubmenu(string[] wholeField)
         {
             ClearText();
             printingTheTitle();
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
-            Console.WriteLine("===================================================================");
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 8);
-            Console.WriteLine("===================================================================");
+            printFrame();
             Console.SetCursorPosition(0, 13);
             centerText("Select LEVEL");
             Console.SetCursorPosition(0, 15);
@@ -45,7 +39,28 @@ namespace CollectTheLettersTestVersion
             Console.WriteLine();
             centerText(wholeField[3] + " Back to main menu ");
         }
-
+        public static void printFrame()
+        {
+            Console.SetCursorPosition((MainClass.width / 2) - 34, 7);
+            Console.WriteLine("===================================================================");
+            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 9);
+            Console.WriteLine("===================================================================");
+        }
+        public static void ClearFrame()
+        {
+            Console.SetCursorPosition(0, 7);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, (MainClass.height / 2) + 9);
+            Console.WriteLine(new string(' ', Console.WindowWidth));
+        }
+        public static void ClearAction()
+        {
+            for (int i = 8; i < Console.WindowHeight; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine(new string(' ', Console.WindowWidth));
+            }
+        }
         private static void centerText(String text)
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -73,11 +88,11 @@ namespace CollectTheLettersTestVersion
             Console.ResetColor();
         }
         //remove scrollbars of the console
-        static void RemoveScrollBars()
+        public static void RemoveScrollBars()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.BufferHeight = Console.WindowHeight;
-            Console.BufferWidth = Console.WindowWidth;
+            Console.BufferHeight = Console.WindowHeight = 37;
+            Console.BufferWidth = Console.WindowWidth = 100;
         }
 
         public static void ModifyMainMenu(ConsoleKeyInfo keyInfo, string[] field, int index = 0)
@@ -112,6 +127,7 @@ namespace CollectTheLettersTestVersion
                             if (index == 3)
                             {
                                 ClearText();
+                                printFrame();
                                 Console.SetCursorPosition(0, Console.WindowHeight / 2);
                                 centerText("Thank you for playing!\n");
                                 Console.SetCursorPosition(Console.WindowWidth / 2 - 16, Console.WindowHeight / 2 + 2);
@@ -120,6 +136,7 @@ namespace CollectTheLettersTestVersion
                             break;
                         }
                     case ConsoleKey.UpArrow:
+                    case ConsoleKey.W:
                         if (index != 0)
                         {
                             field[index] = new string(MainClass.uncheckedField, 1);
@@ -129,6 +146,7 @@ namespace CollectTheLettersTestVersion
                         }
                         break;
                     case ConsoleKey.DownArrow:
+                    case ConsoleKey.S:
                         if (index != field.Length - 1)
                         {
                             field[index] = new string(MainClass.uncheckedField, 1);
@@ -181,6 +199,7 @@ namespace CollectTheLettersTestVersion
                             break;
                         }
                     case ConsoleKey.UpArrow:
+                    case ConsoleKey.W:
                         if (index != 0)
                         {
                             field[index] = new string(MainClass.uncheckedField, 1);
@@ -190,6 +209,7 @@ namespace CollectTheLettersTestVersion
                         }
                         break;
                     case ConsoleKey.DownArrow:
+                    case ConsoleKey.S:
                         if (index != field.Length - 1)
                         {
                             field[index] = new string(MainClass.uncheckedField, 1);
@@ -226,10 +246,7 @@ namespace CollectTheLettersTestVersion
             printingTheTitle();
 
             //drawing lines
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
-            Console.WriteLine("===================================================================");
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 8);
-            Console.WriteLine("===================================================================");
+            printFrame();
             //drawing text
             Console.SetCursorPosition((MainClass.width / 2) - 13, (MainClass.height / 2) - 5);
             Console.ForegroundColor = ConsoleColor.DarkCyan;

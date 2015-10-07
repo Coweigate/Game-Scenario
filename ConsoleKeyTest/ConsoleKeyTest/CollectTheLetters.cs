@@ -25,7 +25,7 @@ namespace CollectTheLettersTestVersion
 
         public static void Main()
         {
-
+            GameMenuAndMessages.RemoveScrollBars();
             Console.CursorVisible = false;
             int levelChoice = 1;
 
@@ -58,7 +58,7 @@ namespace CollectTheLettersTestVersion
 
             //enter name
             player.PlayerName = GameMenuAndMessages.EnterName();
-
+            GameMenuAndMessages.ClearFrame();
             //creating initial matrix
             Matrix matrix = new Matrix(levelChoice);
             //drawing the matrix to the console
@@ -84,23 +84,9 @@ namespace CollectTheLettersTestVersion
             }
 
             //drawing game name
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 0);
-            Console.Write(@"______ _           _   _   _            _          _   _                 ");
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 1);
-            Console.Write(@"|  ___(_)         | | | | | |          | |        | | | |                ");
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 2);
-            Console.Write(@"| |_   _ _ __   __| | | |_| |__   ___  | |     ___| |_| |_ ___ _ __ ___  ");
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 3);
-            Console.Write(@"|  _| | | '_ \ / _` | | __| '_ \ / _ \ | |    / _ \ __| __/ _ \ '__/ __| ");
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 4);
-            Console.Write(@"| |   | | | | | (_| | | |_| | | |  __/ | |___|  __/ |_| ||  __/ |  \__ \ ");
-            Console.SetCursorPosition((MainClass.width / 2) - 36, 5);
-            Console.Write(@"\_|   |_|_| |_|\__,_|  \__|_| |_|\___| \_____/\___|\__|\__\___|_|  |___/ ");
-            //drawing lines
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) - 7);
-            Console.WriteLine("===================================================================");
-            Console.SetCursorPosition((MainClass.width / 2) - 34, (MainClass.height / 2) + 8);
-            Console.WriteLine("===================================================================");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            GameMenuAndMessages.printingTheTitle();
+            Console.ForegroundColor = ConsoleColor.White;
 
             //drawing the player to the console
             player.DrawPlayer();
@@ -115,6 +101,7 @@ namespace CollectTheLettersTestVersion
                 {
                     if (player.Points == letterToCollect)
                     {
+                        GameMenuAndMessages.ClearAction();
                         //highscore
                         menu = true;
                         Highscore.AddHighscore(player.Points, player.PlayerName);
