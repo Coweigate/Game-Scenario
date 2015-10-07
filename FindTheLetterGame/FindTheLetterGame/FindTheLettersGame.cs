@@ -49,7 +49,7 @@ namespace FindTheLettersGame
 
 
         //declare level by default 1
-        static int level = 1;
+        static int level = 3;
         //declare timer
         static Stopwatch timer = new Stopwatch();
         /*---------------------*/
@@ -71,18 +71,7 @@ namespace FindTheLettersGame
             ModifyFields(keyInfo, wholeField, 0);
             //END OF MENU PART
 
-            //RemoveScrollBars();
-            /*intro part*/
-
-            //shows the title of the game
-
-            //menu with short instructions
-            //- you have 20 seconds to find and collect alphabetically a number of letters
-            //- arrow up/down/left/right for movements
-            //-'h' for hint(optional)
-            //- press ENTER to start
-
-            /*end of intro part*/
+         
             MainLoop();
         }
         //MENU METHODS
@@ -178,7 +167,7 @@ namespace FindTheLettersGame
         //MAtRIX GENERATOR METHODS
         static void GenerateMatrix(int level)
         {
-            int boardSize = 30;
+            int boardSize = 24;
             char[][] matrix = new char[boardSize][];
 
             if (level == 1)
@@ -241,12 +230,12 @@ namespace FindTheLettersGame
 
         static void PrintMatrix(char[][] matrix, int boardSize)
         {
-            Console.SetCursorPosition(Console.WindowWidth / 2 - 30, 4);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 27, 4);
             
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
-                Console.SetCursorPosition(Console.WindowWidth / 2 - 30, 4 + row);
-                for (int col = 0; col < 60; col++)
+                Console.SetCursorPosition(Console.WindowWidth / 2 - 27, 4 + row);
+                for (int col = 0; col < 56; col++)
                 {
                     Console.Write("{0}", matrix[row][col]);
                 }
