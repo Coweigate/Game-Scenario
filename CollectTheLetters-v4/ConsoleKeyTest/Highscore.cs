@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Threading;
 
-namespace CollectTheLettersTestVersion
+namespace FindTheLetters
 {
     class Highscore
     {

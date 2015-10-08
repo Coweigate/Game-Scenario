@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CollectTheLettersTestVersion
+namespace FindTheLetters
 {
     class Matrix
     {

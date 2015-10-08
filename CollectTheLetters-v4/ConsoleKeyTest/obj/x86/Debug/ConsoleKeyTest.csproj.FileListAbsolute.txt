@@ -35,3 +35,5 @@ E:\GameProject\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\obj\x86\Debug\Conso
 E:\GameProject\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\bin\Debug\ConsoleKeyTest.exe
 E:\GameProject\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\bin\Debug\ConsoleKeyTest.pdb
 E:\GameProject\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\obj\x86\Debug\ConsoleKeyTest.csprojResolveAssemblyReference.cache
+C:\Users\kolev\Desktop\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\obj\x86\Debug\ConsoleKeyTest.exe
+C:\Users\kolev\Desktop\Coweigate\CollectTheLetters-v4\ConsoleKeyTest\obj\x86\Debug\ConsoleKeyTest.pdb
