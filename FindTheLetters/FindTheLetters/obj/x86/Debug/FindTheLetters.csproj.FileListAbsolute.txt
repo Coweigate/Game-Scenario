@@ -1,0 +1,2 @@
+C:\Users\kolev\Desktop\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.exe
+C:\Users\kolev\Desktop\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.pdb
