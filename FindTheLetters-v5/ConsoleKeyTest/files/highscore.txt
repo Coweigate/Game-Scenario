@@ -1,0 +1,5 @@
+1. Georgi 50 44
+2. Jenny 50 52
+3. Michael 50 57
+4. Andrew 40 43
+5. Denis 15 9
