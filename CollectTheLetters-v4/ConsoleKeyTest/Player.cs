@@ -96,10 +96,10 @@ namespace CollectTheLettersTestVersion
             string scoreMessage = String.Format("Score: {0}", points);
             //setting the cursor at custom position for the score message
             //to clear the screen on each update
-            Console.SetCursorPosition((Console.WindowWidth) / 2 + 1, Console.WindowHeight - 3);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 28, Console.WindowHeight - 3);
             Console.Write(new string(' ', scoreMessage.Length + 1));
 
-            Console.SetCursorPosition((Console.WindowWidth) / 2 + 1, Console.WindowHeight - 3);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 28, Console.WindowHeight - 3);
             Console.Write(scoreMessage);
             Console.ResetColor();
         }
@@ -152,7 +152,7 @@ namespace CollectTheLettersTestVersion
         {
             if (gameTime.ElapsedMilliseconds == 1000)
             {
-                Console.SetCursorPosition(Console.WindowWidth - 10, Console.WindowHeight - 3);
+                Console.SetCursorPosition(Console.WindowWidth - 32, Console.WindowHeight - 3);
                 Console.Write("Time = {0}", playerTime);
                 playerTime++;
                 gameTime.Restart();

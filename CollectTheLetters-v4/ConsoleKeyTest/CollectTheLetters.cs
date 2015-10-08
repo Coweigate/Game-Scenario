@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading;
 
 namespace CollectTheLettersTestVersion
 {
@@ -100,7 +101,7 @@ namespace CollectTheLettersTestVersion
             player.PlayerScore();
 
             //draw timer to the screen
-            Console.SetCursorPosition(Console.WindowWidth - 10, Console.WindowHeight - 3);
+            Console.SetCursorPosition(Console.WindowWidth - 32, Console.WindowHeight - 3);
             Console.Write("Time = 0");
 
             //update the remaining lettes
@@ -169,7 +170,6 @@ namespace CollectTheLettersTestVersion
             //highscore
             menu = true;
             Highscore.AddHighscore(player.Points, player.playerTime, player.PlayerName);
-
             string exitToMainMenuMessage = "To exit to Main Menu press ESC.";
             Console.SetCursorPosition((Console.WindowWidth - exitToMainMenuMessage.Length) / 2, (Console.WindowHeight - exitToMainMenuMessage.Length) / 2);
             Console.ForegroundColor = ConsoleColor.DarkRed;

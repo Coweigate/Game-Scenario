@@ -9,7 +9,7 @@ namespace CollectTheLettersTestVersion
     class Letters
     {
         public char letter;
-        Matrix matrixBoard = new Matrix(1);
+        Matrix matrixBoard;
         public ConsoleColor letterColor;
         public bool hasBeenStepedOver = false;
         char[] letters = new char[26];
@@ -37,6 +37,7 @@ namespace CollectTheLettersTestVersion
                 letters[i] = (char)num;
                 num++;
             }
+            matrixBoard = matrix;
             randomGenerator = random;
             //setting the letter color
             letterColor = LetterColor(randomGenerator.Next(1, 9));
@@ -199,25 +200,26 @@ namespace CollectTheLettersTestVersion
 
         public static void RemainingLetters(List<Letters> listOfLetters)
         {
+
             string remainingLetters = String.Format("Remaining letters: {0}", listOfLetters.Count);
             //to clear the screen on each update
             Console.SetCursorPosition(0, Console.WindowHeight - 3);
             Console.Write(new string(' ', remainingLetters.Length + 1));
 
-            Console.SetCursorPosition(0, Console.WindowHeight - 3);
+            Console.SetCursorPosition(Console.WindowWidth / 2 - 28, 8);
             Console.Write("Remaining letters: {0}", listOfLetters.Count);
-            DrawRemainingLettersOrder(listOfLetters, (remainingLetters.Length + 1));
+            DrawRemainingLettersOrder(listOfLetters, Console.WindowWidth / 2 - 28 + (remainingLetters.Length + 1));
         }
 
         private static void DrawRemainingLettersOrder(List<Letters> listOfLetters, int position)
         {
             //clearing the screen
-            Console.SetCursorPosition(position, Console.WindowHeight - 3);
+            Console.SetCursorPosition(position, 8);
             Console.Write(new string(' ', listOfLetters.Count + 2));
 
             for (int i = 0; i < listOfLetters.Count; i++)
             {
-                Console.SetCursorPosition((position + i), Console.WindowHeight - 3);
+                Console.SetCursorPosition((position + i), 8);
                 Console.ForegroundColor = listOfLetters[i].letterColor;
                 Console.Write(listOfLetters[i].letter);
             }
