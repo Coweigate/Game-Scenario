@@ -67,7 +67,7 @@ namespace FindTheLetters
             matrix.DrawMatrix();
             //get 10 random letters
             Random randomNum = new Random();
-            int letterToCollect = 5;
+            int letterToCollect = 6;
             List<Letters> lettersToWrite = new List<Letters>();
             for (int i = 0; i < letterToCollect; i++)
             {
