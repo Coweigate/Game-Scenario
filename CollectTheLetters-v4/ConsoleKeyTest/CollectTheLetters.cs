@@ -168,7 +168,7 @@ namespace CollectTheLettersTestVersion
             
             //highscore
             menu = true;
-            Highscore.AddHighscore(player.Points, player.PlayerName);
+            Highscore.AddHighscore(player.Points, player.playerTime, player.PlayerName);
 
             string exitToMainMenuMessage = "To exit to Main Menu press ESC.";
             Console.SetCursorPosition((Console.WindowWidth - exitToMainMenuMessage.Length) / 2, (Console.WindowHeight - exitToMainMenuMessage.Length) / 2);

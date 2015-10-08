@@ -23,17 +23,18 @@ namespace CollectTheLettersTestVersion
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.SetCursorPosition((width / 2) - 6, 9);
             Console.WriteLine("| HIGHSCORE |");
-
+            Console.SetCursorPosition((width / 2) - 14, 12);
+            Console.WriteLine("№     NAME     Score     Time");
             //get all the Lines from file and print them
             StringBuilder outputLine = new StringBuilder();
             int count = 0;
             using (var highscore = new StreamReader("highscore.txt"))
             {
                 string line = highscore.ReadLine();
-                while(line != null)
+                while (line != null)
                 {
                     count++;
-                    if(count == 1)
+                    if (count == 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
                     }
@@ -41,9 +42,9 @@ namespace CollectTheLettersTestVersion
                     {
                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                     }
-                    Console.SetCursorPosition((width / 2) - 9, (height / 2) - 7 + count*2);
+                    Console.SetCursorPosition((width / 2) - 14, (height / 2) - 6 + count * 2);
                     outputLine = new StringBuilder();
-                    outputLine.Append(line.Split(' ')[0].PadRight(5) + line.Split(' ')[1].PadRight(12) + line.Split(' ')[2].PadRight(5));
+                    outputLine.Append(line.Split(' ')[0].PadRight(5) + line.Split(' ')[1].PadRight(12) + line.Split(' ')[2].PadRight(9) + line.Split(' ')[3].PadRight(4));
                     Console.WriteLine(outputLine);
                     line = highscore.ReadLine();
                 }
@@ -54,7 +55,7 @@ namespace CollectTheLettersTestVersion
             }
         }
 
-        public static void AddHighscore(int score, string name)
+        public static void AddHighscore(int score, int time, string name)
         {
             bool ifNotAddScore = true;
             List<string> updateHighscore = new List<string>();
@@ -62,37 +63,46 @@ namespace CollectTheLettersTestVersion
             using (var highscore = new StreamReader("highscore.txt"))
             {
                 string line = highscore.ReadLine();
-                while(line != null)
+                while (line != null)
                 {
                     int scoreFromLine = int.Parse(line.Split(' ')[2]);
                     string nameFromLine = line.Split(' ')[1];
-                    if(score > scoreFromLine && ifNotAddScore)
+                    int timeFromLine = int.Parse(line.Split(' ')[3]);
+                    if (score > scoreFromLine && ifNotAddScore)
                     {
-                        updateHighscore.Add(name + " " + score);
+                        updateHighscore.Add(name + " " + score + " " + time);
                         ifNotAddScore = false;
                     }
-                    else if (score > scoreFromLine && ifNotAddScore)
+                    else if (score == scoreFromLine && ifNotAddScore)
                     {
-                        updateHighscore.Add(name + " " + score);
+                        if (time < timeFromLine)
+                        {
+                            updateHighscore.Add(name + " " + score + " " + time);
+                            ifNotAddScore = false;
+                        }
+                    }
+                    updateHighscore.Add(nameFromLine + " " + scoreFromLine + " " + timeFromLine);
+                    if(score == scoreFromLine && ifNotAddScore && time >= timeFromLine)
+                    {
+                        updateHighscore.Add(name + " " + score + " " + time);
                         ifNotAddScore = false;
                     }
-                    updateHighscore.Add(nameFromLine + " " + scoreFromLine);
                     line = highscore.ReadLine();
                 }
             }
             //if no highscore
-            if(ifNotAddScore)
+            if (ifNotAddScore)
             {
-                updateHighscore.Add(name + " " + score);
+                updateHighscore.Add(name + " " + score + " " + time);
                 ifNotAddScore = false;
             }
             //if compare highscore is the lowest
-            if(!ifNotAddScore)
+            if (!ifNotAddScore)
             {
                 using (var writeScore = new StreamWriter("highscore.txt"))
                 {
                     int resultsLength = 5;
-                    if(updateHighscore.Count < 5)
+                    if (updateHighscore.Count < 5)
                     {
                         resultsLength = updateHighscore.Count;
                     }

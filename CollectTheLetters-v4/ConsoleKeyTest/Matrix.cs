@@ -37,7 +37,7 @@ namespace CollectTheLettersTestVersion
             }
             //to position the cursor
             matrixOffsetX = (Console.WindowWidth - levelMatrix.GetLength(0)) / 2;
-            matrixOffsetY = (Console.WindowHeight - levelMatrix.GetLength(1)) / 2;
+            matrixOffsetY = (Console.WindowHeight - levelMatrix.GetLength(1)) / 2 + 4;
 
             //getting the matrix borders to limit the player movements(to not be able to move outside the matrix)
             leftBorder = matrixOffsetX;
