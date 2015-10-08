@@ -25,6 +25,26 @@ namespace FindTheLetters
             //drawing lines
             printFrame();
         }
+        static void Instructions()
+        {
+            GameMenuAndMessages.ClearText();
+            GameMenuAndMessages.printFrame();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 8, 9);
+            Console.WriteLine("| INSTRUCTIONS |");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 26, (Console.WindowHeight / 2) - 6 );
+            Console.WriteLine("1. Your aim is to collect all the letters on the");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 26, (Console.WindowHeight / 2) - 5);
+            Console.WriteLine("board in the order they are shown over the board.");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 26, (Console.WindowHeight / 2) - 3);
+            Console.WriteLine("2.Use your [W](up) [A](left) [S](donw) [D](right)");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 26, (Console.WindowHeight / 2) - 2);
+            Console.WriteLine("keys or arrow keys to navigate the player on the");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 26, (Console.WindowHeight / 2) - 1);
+            Console.WriteLine("board up, down, left and right.");
+            Console.SetCursorPosition((Console.WindowWidth / 2) - 13, 26);
+            Console.WriteLine("PRESS [BACKSPACE] TO BACK");
+        }
         static void PrintSubmenu(string[] wholeField)
         {
             ClearText();
@@ -130,7 +150,8 @@ namespace FindTheLetters
                             }
                             if (index == 1)
                             {
-
+                                Instructions();
+                                break;
                             }
                             if (index == 2)
                             {

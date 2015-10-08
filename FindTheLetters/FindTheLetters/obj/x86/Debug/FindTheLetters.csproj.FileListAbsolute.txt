@@ -1,2 +1,7 @@
 C:\Users\kolev\Desktop\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.exe
 C:\Users\kolev\Desktop\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.pdb
+E:\GameProject\new\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.exe
+E:\GameProject\new\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\ConsoleKeyTest.pdb
+E:\GameProject\new\Coweigate\FindTheLetters\FindTheLetters\bin\Debug\ConsoleKeyTest.exe
+E:\GameProject\new\Coweigate\FindTheLetters\FindTheLetters\bin\Debug\ConsoleKeyTest.pdb
+E:\GameProject\new\Coweigate\FindTheLetters\FindTheLetters\obj\x86\Debug\FindTheLetters.csprojResolveAssemblyReference.cache

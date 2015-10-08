@@ -171,7 +171,7 @@ namespace FindTheLetters
             menu = true;
             Highscore.AddHighscore(player.Points, player.playerTime, player.PlayerName);
             string exitToMainMenuMessage = "To exit to Main Menu press ESC.";
-            Console.SetCursorPosition((Console.WindowWidth - exitToMainMenuMessage.Length) / 2, (Console.WindowHeight - exitToMainMenuMessage.Length) / 2);
+            Console.SetCursorPosition((Console.WindowWidth - exitToMainMenuMessage.Length) / 2 + 10, (Console.WindowHeight - exitToMainMenuMessage.Length) / 2 + 5);
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine(exitToMainMenuMessage);
             Console.ResetColor();
