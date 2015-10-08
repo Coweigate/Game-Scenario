@@ -21,13 +21,13 @@ namespace CollectTheLettersTestVersion
         {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
         public static string[] subMenuField = new[] // init the submenu /w 4 fields
         {wholeUncheckedString, wholeUncheckedString, wholeUncheckedString, wholeUncheckedString};
-
+        //level
+        public static int levelChoice;
 
         public static void Main()
         {
             GameMenuAndMessages.RemoveScrollBars();
             Console.CursorVisible = false;
-            int levelChoice = 1;
 
             //we can use random level option in the menu and a specific level option
 
@@ -63,7 +63,6 @@ namespace CollectTheLettersTestVersion
             Matrix matrix = new Matrix(levelChoice);
             //drawing the matrix to the console
             matrix.DrawMatrix();
-
             //get 10 random letters
             Random randomNumGenerator = new Random();
             int letterToCollect = 6;

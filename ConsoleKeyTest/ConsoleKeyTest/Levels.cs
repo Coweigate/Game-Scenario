@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -11,36 +12,69 @@ namespace CollectTheLettersTestVersion
         {
             string[,] matrix = new string[56, 24];
 
-            //initializing the matrix
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            var reader = new StreamReader("../../Levels/level1.txt");
+            using (reader)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                int j = 0;
+                string line = reader.ReadLine();
+                while (line != null)
                 {
-                    matrix[i, j] = " ";
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        string matrixLine = line;
+
+                        matrix[i, j] = matrixLine[i].ToString();
+                    }
+                    line = reader.ReadLine();
+                    j++;
                 }
             }
+            return matrix;
+        }
 
-            int numOfRows = matrix.GetLength(0);
-            int numOfCols = matrix.GetLength(1);
-            //top wall
-            for (int i = 0; i < numOfCols; i++)
+        public static string[,] LevelTwo()
+        {
+            string[,] matrix = new string[56, 24];
+
+            var reader = new StreamReader("../../Levels/level2.txt");
+            using (reader)
             {
-                matrix[0, i] = "+";
+                int j = 0;
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        string matrixLine = line;
+
+                        matrix[i, j] = matrixLine[i].ToString();
+                    }
+                    line = reader.ReadLine();
+                    j++;
+                }
             }
-            //left wall
-            for (int i = 1; i < numOfRows - 1; i++)
+            return matrix;
+        }
+        public static string[,] LevelThree()
+        {
+            string[,] matrix = new string[56, 24];
+
+            var reader = new StreamReader("../../Levels/level3.txt");
+            using (reader)
             {
-                matrix[i, 0] = "+";
-            }
-            ////bottom wall
-            for (int i = 0; i < numOfCols; i++)
-            {
-                matrix[numOfRows - 1, i] = "+";
-            }
-            ////right wall
-            for (int i = 1; i < numOfRows - 1; i++)
-            {
-                matrix[i, numOfCols - 1] = "+";
+                int j = 0;
+                string line = reader.ReadLine();
+                while (line != null)
+                {
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        string matrixLine = line;
+                        //matrixLine = line.ToCharArray();
+                        matrix[i, j] = matrixLine[i].ToString();
+                    }
+                    line = reader.ReadLine();
+                    j++;
+                }
             }
             return matrix;
         }

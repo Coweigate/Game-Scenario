@@ -23,8 +23,10 @@ namespace CollectTheLettersTestVersion
                     matrix = Levels.LevelOne();                
                     break;
                 case 2:
+                    matrix = Levels.LevelTwo();
                     break;
                 case 3:
+                    matrix = Levels.LevelThree();
                     break;
                 default:
                     matrix = Levels.LevelOne();
@@ -40,7 +42,7 @@ namespace CollectTheLettersTestVersion
             //getting the matrix borders to limit the player movements(to not be able to move outside the matrix)
             leftBorder = matrixPositionX;            
             rightBorder = matrixPositionX + (matrix.GetLength(0) - 1);            
-            topBorder = matrixPositionY;            
+            topBorder = matrixPositionY;
             bottomBorder = matrixPositionY + (matrix.GetLength(1) - 1);
         }
        

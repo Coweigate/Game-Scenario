@@ -49,8 +49,8 @@ namespace CollectTheLettersTestVersion
                 }
                 Console.ForegroundColor = ConsoleColor.White;
                 //info text
-                Console.SetCursorPosition((width / 2) - 10, 26);
-                Console.WriteLine("PRESS ANY KEY TO BACK");
+                Console.SetCursorPosition((width / 2) - 13, 26);
+                Console.WriteLine("PRESS [BACKSPACE] TO BACK");
             }
         }
 
@@ -66,7 +66,12 @@ namespace CollectTheLettersTestVersion
                 {
                     int scoreFromLine = int.Parse(line.Split(' ')[2]);
                     string nameFromLine = line.Split(' ')[1];
-                    if(score >= scoreFromLine && ifNotAddScore)
+                    if(score > scoreFromLine && ifNotAddScore)
+                    {
+                        updateHighscore.Add(name + " " + score);
+                        ifNotAddScore = false;
+                    }
+                    else if (score > scoreFromLine && ifNotAddScore)
                     {
                         updateHighscore.Add(name + " " + score);
                         ifNotAddScore = false;

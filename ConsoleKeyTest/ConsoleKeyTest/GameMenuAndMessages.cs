@@ -48,15 +48,16 @@ namespace CollectTheLettersTestVersion
         }
         public static void ClearText()
         {
-            for (int i = 8; i <= 26; i++)
+            for (int i = 8; i <= 27; i++)
             {
                 Console.SetCursorPosition(0, i);
                 Console.WriteLine(new string(' ', Console.WindowWidth));
             }
-            Console.SetCursorPosition(0, Console.WindowHeight / 2 + 11);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.WindowHeight - 3);
-            Console.WriteLine(new string(' ', Console.WindowWidth));
+            for (int i = 28; i < 34; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine(new string(' ', Console.WindowWidth));
+            }
         }
         public static void ClearFrame()
         {
@@ -167,7 +168,7 @@ namespace CollectTheLettersTestVersion
                             PrintMainMenu(field);
                         }
                         break;
-                    default:
+                    case ConsoleKey.Backspace:
                         string wholeUncheckedString2 = new string(MainClass.uncheckedField, 1); //creating the unchecked field /w tabulation
                         string wholeCheckedString2 = new string(MainClass.checkedField, 1); //creating the checked field /w tabulation
                         string[] wholeField2 = new[] // init the menu /w 4 fields
@@ -194,12 +195,25 @@ namespace CollectTheLettersTestVersion
                         {
                             if (index == 0)
                             {
+                                MainClass.levelChoice = 1;
                                 MainClass.menu = false;
                                 MainClass.Main();
                                 //open level 1
                                 break;
                             }
-                            else if (index == 3)
+                            if(index == 1)
+                            {
+                                MainClass.levelChoice = 2;
+                                MainClass.menu = false;
+                                MainClass.Main();
+                            }
+                            if(index == 2)
+                            {
+                                MainClass.levelChoice = 3;
+                                MainClass.menu = false;
+                                MainClass.Main();
+                            }
+                            if (index == 3)
                             {
                                 MainClass.subMenuField = new[] // reset the fields
                                 {MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString, MainClass.wholeUncheckedString};
